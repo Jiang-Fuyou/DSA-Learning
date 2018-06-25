@@ -3,8 +3,42 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Courses", "Courses", "{9CF596A8-0CD5-479C-BE19-4AAE27F8035C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter02", "Chapter02", "{4DA02BDE-852C-41D1-A53F-2F955A537D03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Books", "Books", "{D1F2D678-CF8D-4907-BD5E-B3C7CD4465FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MasterAlgorithmsWithC", "MasterAlgorithmsWithC", "{A9A22748-D65D-4BBD-A0EC-107105E3C3C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter05", "Chapter05", "{0EF63B2F-8743-41DC-A32B-837094839179}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "Books\MasterAlgorithmsWithC\Chapter05\LinkedList\LinkedList.vcxproj", "{0798764A-BADB-4FC7-A31F-91011AF473D4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Debug|x64.ActiveCfg = Debug|x64
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Debug|x64.Build.0 = Debug|x64
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Debug|x86.ActiveCfg = Debug|Win32
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Debug|x86.Build.0 = Debug|Win32
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Release|x64.ActiveCfg = Release|x64
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Release|x64.Build.0 = Release|x64
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Release|x86.ActiveCfg = Release|Win32
+		{0798764A-BADB-4FC7-A31F-91011AF473D4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DA02BDE-852C-41D1-A53F-2F955A537D03} = {9CF596A8-0CD5-479C-BE19-4AAE27F8035C}
+		{A9A22748-D65D-4BBD-A0EC-107105E3C3C2} = {D1F2D678-CF8D-4907-BD5E-B3C7CD4465FB}
+		{0EF63B2F-8743-41DC-A32B-837094839179} = {A9A22748-D65D-4BBD-A0EC-107105E3C3C2}
+		{0798764A-BADB-4FC7-A31F-91011AF473D4} = {0EF63B2F-8743-41DC-A32B-837094839179}
 	EndGlobalSection
 EndGlobal
