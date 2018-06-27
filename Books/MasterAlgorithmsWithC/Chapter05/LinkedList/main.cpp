@@ -1,5 +1,8 @@
-#include <stdio.h>
+#define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
+#include <crtdbg.h>
+
+#include <stdio.h>
 
 #include "list.h"
 
@@ -22,6 +25,10 @@ static void print_list(List *list)
 
 int main(int argc, const char *argv[])
 {
+    int tmpFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+    tmpFlag |= _CRTDBG_LEAK_CHECK_DF;
+    _CrtSetDbgFlag(tmpFlag);
+
     List list;
     ListElmt *element;
     int *data, i;
