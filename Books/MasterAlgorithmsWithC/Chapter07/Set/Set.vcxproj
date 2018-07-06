@@ -142,9 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="list.h" />
     <ClInclude Include="set.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="set.cpp" />
   </ItemGroup>

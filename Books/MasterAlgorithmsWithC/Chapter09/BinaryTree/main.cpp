@@ -5,10 +5,10 @@
 #include "traverse.h"
 
 
+// 前序输出，根->左->右，即先输出根节点，然后左子树递归，然后右子树递归
 static void print_preorder(const BinaryTreeNode *node)
 {
     if (!bitree_is_eob(node)) {
-
         fprintf(stdout, "Node=%03d\n", *(int *)bitree_data(node));
 
         if (!bitree_is_eob(bitree_left(node)))
@@ -19,7 +19,7 @@ static void print_preorder(const BinaryTreeNode *node)
     }
 }
 
-
+// 中序输出，左->根->右，即先左子树递归，然后输出根节点信息，然后右子树递归
 static void print_inorder(const BinaryTreeNode *node)
 {
     if (!bitree_is_eob(node)) {
@@ -34,7 +34,7 @@ static void print_inorder(const BinaryTreeNode *node)
     }
 }
 
-
+// 后序输出，左->右->根，即先左子树递归，然后右子树递归，最后输出根节点
 static void print_postorder(const BinaryTreeNode *node)
 {
     if (!bitree_is_eob(node)) {
@@ -49,7 +49,7 @@ static void print_postorder(const BinaryTreeNode *node)
     }
 }
 
-
+// 每次插入要做对比，根据大小选择插入的位置，这是普通的二叉树，并不做平衡处理
 static int insert_int(BinaryTree *bitree, int i)
 {
     BinaryTreeNode *node, *prev;
@@ -98,6 +98,7 @@ static BinaryTreeNode *search_int(BinaryTree *bitree, int i)
 
     node = bitree_root(bitree);
 
+    // 等于则是当前节点，小于则向左搜索，大于则向右搜索
     while (!bitree_is_eob(node)) {
         if (i == *(int *)bitree_data(node)) {
             return node;
@@ -142,66 +143,49 @@ int main(int argc, char **argv)
     if (insert_int(&bitree, 26) != 0) return 1;
     if (insert_int(&bitree, 5 ) != 0) return 1;
 
+
     fprintf(stdout, "Tree size is %d\n", bitree_size(&bitree));
     fprintf(stdout, "(Preorder traversal)\n");
     print_preorder(bitree_root(&bitree));
     fprintf(stdout, "(Inorder traversal)\n");
     print_inorder(bitree_root(&bitree));
 
-#if 0
+
     i = 30;
-
     if ((node = search_int(&bitree, i)) == NULL) {
-
         fprintf(stdout, "Could not find %03d\n", i);
-
-    }
-
-    else {
-
+    } else {
         fprintf(stdout, "Found %03d...Removing the left bitree below it\n", i);
         bitree_rem_left(&bitree, node);
         fprintf(stdout, "Tree size is %d\n", bitree_size(&bitree));
         fprintf(stdout, "(Preorder traversal)\n");
         print_preorder(bitree_root(&bitree));
-
     }
+
 
     i = 99;
-
     if ((node = search_int(&bitree, i)) == NULL) {
-
         fprintf(stdout, "Could not find %03d\n", i);
-
-    }
-
-    else {
-
+    } else {
         fprintf(stdout, "Found %03d...Removing the right bitree below it\n", i);
         bitree_rem_right(&bitree, node);
         fprintf(stdout, "Tree size is %d\n", bitree_size(&bitree));
         fprintf(stdout, "(Preorder traversal)\n");
         print_preorder(bitree_root(&bitree));
-
     }
+
 
     i = 20;
-
     if ((node = search_int(&bitree, i)) == NULL) {
-
         fprintf(stdout, "Could not find %03d\n", i);
-
-    }
-
-    else {
-
+    } else {
         fprintf(stdout, "Found %03d...Removing the right bitree below it\n", i);
         bitree_rem_right(&bitree, node);
         fprintf(stdout, "Tree size is %d\n", bitree_size(&bitree));
         fprintf(stdout, "(Preorder traversal)\n");
         print_preorder(bitree_root(&bitree));
-
     }
+
 
     i = bitree_is_leaf(bitree_root(&bitree));
     fprintf(stdout, "Testing bitree_is_leaf...Value=%d (0=OK)\n", i);
@@ -212,20 +196,12 @@ int main(int argc, char **argv)
     i = bitree_is_leaf(bitree_right(bitree_left((bitree_root(&bitree)))));
     fprintf(stdout, "Testing bitree_is_leaf...Value=%d (1=OK)\n", i);
 
+
     fprintf(stdout, "Inserting some nodes\n");
-
-    if (insert_int(&bitree, 55) != 0)
-        return 1;
-
-    if (insert_int(&bitree, 44) != 0)
-        return 1;
-
-    if (insert_int(&bitree, 77) != 0)
-        return 1;
-
-    if (insert_int(&bitree, 11) != 0)
-        return 1;
-
+    if (insert_int(&bitree, 55) != 0) return 1;
+    if (insert_int(&bitree, 44) != 0) return 1;
+    if (insert_int(&bitree, 77) != 0) return 1;
+    if (insert_int(&bitree, 11) != 0) return 1;
     fprintf(stdout, "Tree size is %d\n", bitree_size(&bitree));
     fprintf(stdout, "(Preorder traversal)\n");
     print_preorder(bitree_root(&bitree));
@@ -234,15 +210,10 @@ int main(int argc, char **argv)
     fprintf(stdout, "(Postorder traversal)\n");
     print_postorder(bitree_root(&bitree));
 
-    /*****************************************************************************
-    *                                                                            *
-    *  Destroy the binary bitree.                                                  *
-    *                                                                            *
-    *****************************************************************************/
 
     fprintf(stdout, "Destroying the bitree\n");
     bitree_destroy(&bitree);
-#endif // 0
+
 
     return 0;
 }
